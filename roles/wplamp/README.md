@@ -29,7 +29,7 @@ Bạn phải cấu hình các máy chủ được quản lý trong file `ansible
 
 - Config file playbook 
 
-Có thể chỉnh sửa cấu hình các biến `var` hoặc thông tin remote_user để phù hợp với hệ thống của bạn.
+Có thể chỉnh sửa cấu hình các biến `var` hoặc thông tin `remote_user` để phù hợp với hệ thống của bạn.
 
 Example Playbook
 ----------------

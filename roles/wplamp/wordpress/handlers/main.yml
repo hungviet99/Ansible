@@ -1,0 +1,6 @@
+---
+# handlers file for wordpress
+- name: Start httpd service
+  service: 
+    name: "{{ apache_name_service }}"
+    state: restarted

@@ -1,0 +1,17 @@
+---
+php_packages:
+  - php
+  - libapache2-mod-php
+  - php-cli
+  - php-common
+  - php-gd
+  - php-json
+  - php-curl
+  - php-mbstring
+  - php-mysqlnd
+  - php-xml
+  - php-xmlrpc
+  - php-soap
+  - php-intl
+  - php-zip
+  - php-opcache

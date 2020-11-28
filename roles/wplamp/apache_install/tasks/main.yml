@@ -1,0 +1,7 @@
+---
+# tasks file for apache_install
+- name : install apache
+  apt:
+    name: "{{ apache_packages }}"
+    state: present
+

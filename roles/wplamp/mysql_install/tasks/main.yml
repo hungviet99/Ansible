@@ -1,0 +1,11 @@
+---
+# tasks file for mysql_install
+- name: MySQL Python libraries are installed.
+  apt:
+    name: "{{ mysql_python_package_debian }}"
+    state: present
+
+- name: MySQL packages are installed.
+  apt:
+    name: "{{ mariadb_packages }}"
+    state: present

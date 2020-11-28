@@ -1,0 +1,4 @@
+---
+# defaults file for apache_install
+apache_packages: apache2
+apache_name_service: apache2

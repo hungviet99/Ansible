@@ -1,0 +1,9 @@
+---
+# Create db for wordpress
+- name: create user wpress
+  mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: "{{wp_mysql_user}}"
+    host: "%"
+    password: "{{wp_mysql_password}}"
+    priv: "*.*:ALL"

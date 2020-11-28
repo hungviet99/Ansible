@@ -1,0 +1,7 @@
+---
+# handlers file for apache_install
+- name: Start httpd service
+  service: 
+    name: "{{ apache_name_service }}"
+    enabled: true
+    state: started

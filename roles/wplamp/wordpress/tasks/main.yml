@@ -1,0 +1,16 @@
+---
+# download code wordpress
+- name: download source wordpress
+  unarchive:
+    src: https://wordpress.org/latest.tar.gz
+    dest: '{{ web_root }}'
+    remote_src: yes
+
+# create db/user for wordpress
+- include_tasks: create_db.yml
+
+- include_tasks: create_user.yml
+
+# Setup for wordpress 
+
+- include_tasks: configure.yml

@@ -1,0 +1,7 @@
+---
+# defaults file for mysql_install
+mysql_python_package_debian: python3-pymysql
+sql_name_service: mariadb
+mariadb_packages:
+  - mariadb-client
+  - mariadb-server

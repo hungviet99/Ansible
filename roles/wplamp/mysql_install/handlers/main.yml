@@ -1,0 +1,7 @@
+---
+# handlers file for mysql_install
+- name: Start sql Service
+  service: 
+    name: "{{ sql_name_service }}"
+    enabled: true
+    state: started

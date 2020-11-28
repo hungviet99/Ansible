@@ -11,18 +11,29 @@ Cài đặt cấu hình máy chủ web dựa trên wordpress với Mariadb, PHP 
 | mysql_install | Cài đặt `mariadb-server`, `mariadb-client` và `python-mysqldb` | defaults/main.yml | mysql_python_package_debian<br>sql_name_service<br>mariadb_packages |
 | wordpress | Thiết lập các user và db cho wordpress, tải về wordpress và thiết lập cấu hình cho wordpress | defaults/main.yml | web_root<br> apache_name_service |
 
-## Requirements
+Requirements
+------------
+Playbook hiện tại chỉ có thể chạy trên Ubuntu 18.04
 
-- Clone repo 
+## Guide
+
+- Clone repository
 
 ```
-git clone 
+git clone https://github.com/hungviet99/Ansible.git
+```
 
+- Config file inventory
 
+Bạn phải cấu hình các máy chủ được quản lý trong file `ansible/hosts` để có thể chạy playbook. 
+
+- Config file playbook 
+
+Có thể chỉnh sửa cấu hình các biến `var` hoặc thông tin remote_user để phù hợp với hệ thống của bạn.
 
 Example Playbook
 ----------------
-    - hosts: servers
+    - hosts: wordpress
       become: yes
       vars:
         wp_mysql_db: wordpress

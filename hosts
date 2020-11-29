@@ -1,3 +1,2 @@
 [wordpress]
-web1 ansible_host= ansible_port= ansible_user= ansible_ssh_pass=
-web2 ansible_host= ansible_port= ansible_user= ansible_ssh_pass=
+# nhap dia chi ip cua host duoc quan ly tai day

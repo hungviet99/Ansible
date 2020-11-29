@@ -25,6 +25,60 @@ Playbook sử dụng để cài wordpress trên Ubuntu 18.04 và CentOS 7
 | mysql_install | Cài đặt `mariadb` và gói python cho mysql | defaults/main.yml | mysql_python_package_debian<br>mysql_python_package_rhel<br>mariadb_packages_ubuntu<br>mariadb_packages_centos<br>sql_name_service |
 | wordpress | Thiết lập các user và db cho wordpress, tải về wordpress và thiết lập cấu hình cho wordpress | defaults/main.yml | web_root<br>apache_name_service<br>http_name_service |
 
+## Tree 
+
+Cấu trúc của các role được thể hiện như sau: 
+
+```
+.
+└── wplamp
+    ├── apache_install
+    │   ├── defaults
+    │   │   └── main.yml
+    │   ├── handlers
+    │   │   └── main.yml
+    │   └── tasks
+    │       └── main.yml
+    ├── mysql_install
+    │   ├── defaults
+    │   │   └── main.yml
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── README.md
+    │   └── tasks
+    │       └── main.yml
+    ├── php_config
+    │   ├── defaults
+    │   │   └── main.yml
+    │   └── tasks
+    │       ├── main.yml
+    │       ├── php_install_centos7.yml
+    │       └── php_install_ubuntu18.yml
+    ├── README.md
+    └── wordpress
+        ├── defaults
+        │   └── main.yml
+        ├── handlers
+        │   └── main.yml
+        └── tasks
+            ├── centos_create_db_user.yml
+            ├── chmod_centos.yml
+            ├── chmod_ubuntu.yml
+            ├── configure.yml
+            ├── main.yml
+            └── ubuntu_create_db_user.yml
+```
+
+thư mục role có các nhiệm vụ tương ứng như: 
+
+- `apache_install`: cài đặt và khởi động apache
+
+- `mysql_install`: cài đặt và khởi động mariadb
+
+- `php_config`: cài đặt php và các mở rộng của nó
+
+- `wordpress`: tải về, giải nén, tạo database, tạo user và cấu hình wp-config
+
 ## Guide
 
 Để bắt đầu sử dụng playbook này, bạn chỉ cần làm theo các bước sau: 
@@ -125,16 +179,7 @@ PLAY RECAP *********************************************************************
 host1-10.10.30.5          : ok=24   changed=18   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0
 host4-10.10.30.4          : ok=17   changed=10   unreachable=0    failed=0    skipped=8    rescued=0    ignored=0
 ```
-
-### 6. Cấu hình wordpress
-
-Sau khi chạy playbook thành công, sử dụng trình duyệt truy cập web theo địa chỉ các host quản lý và hoàn tất việc cấu hình cho trang web của bạn. 
-
-```
-http://ip_address
-```
-
-
+Khi `failed` = 0 tức là không có lỗi xảy ra trong quá trình cài đặt. Quá trình chạy playbook hoàn tất !
 
 Author Information
 ------------------

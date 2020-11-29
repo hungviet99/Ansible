@@ -1,7 +1,8 @@
 ---
 # handlers file for apache_install
-- name: Start httpd service
+- name: Start apache service
   service: 
     name: "{{ apache_name_service }}"
     enabled: true
     state: started
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

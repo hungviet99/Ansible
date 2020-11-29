@@ -6,14 +6,14 @@ Cài đặt cấu hình máy chủ web dựa trên wordpress với Mariadb, PHP 
 
 | Role | Description | var path | var name | 
 |-------|------------| -------- | -------- |
-| php_config | Cài đặt PHP và các phần mở rộng PHP cần thiết mà Wordpress cần | defaults/main.yml | php_packages | 
-| apache_install | Cài đặt apache2 làm web server | defaults/main.yml | apache_packages<br>apache_name_service |
-| mysql_install | Cài đặt `mariadb-server`, `mariadb-client` và `python-mysqldb` | defaults/main.yml | mysql_python_package_debian<br>sql_name_service<br>mariadb_packages |
-| wordpress | Thiết lập các user và db cho wordpress, tải về wordpress và thiết lập cấu hình cho wordpress | defaults/main.yml | web_root<br> apache_name_service |
+| php_config | Cài đặt PHP và các phần mở rộng PHP cần thiết mà Wordpress cần | defaults/main.yml | php_ubuntu_packages<br>php_centos7_packages | 
+| apache_install | Cài đặt apache2 làm web server | defaults/main.yml | apache_packages<br>apache_name_service<br>httpd_packages<br>httpd_name_service |
+| mysql_install | Cài đặt `mariadb` và gói python cho mysql | defaults/main.yml | mysql_python_package_debian<br>mysql_python_package_rhel<br>mariadb_packages_ubuntu<br>mariadb_packages_centos<br>sql_name_service |
+| wordpress | Thiết lập các user và db cho wordpress, tải về wordpress và thiết lập cấu hình cho wordpress | defaults/main.yml | web_root<br>apache_name_service<br>http_name_service |
 
 Requirements
 ------------
-Playbook hiện tại chỉ có thể chạy trên Ubuntu 18.04
+Playbook sử dụng để cài wordpress trên Ubuntu 18.04 và CentOS 7
 
 ## Guide
 

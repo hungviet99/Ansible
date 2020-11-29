@@ -1,11 +1,31 @@
 ---
 # tasks file for mysql_install
-- name: MySQL Python libraries are installed.
+- name: python3-pymysql libraries are installed.
   apt:
     name: "{{ mysql_python_package_debian }}"
     state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: MySQL packages are installed.
+- name: Mariadb packages are installed ubuntu.
   apt:
-    name: "{{ mariadb_packages }}"
+    name: "{{ mariadb_packages_ubuntu }}"
     state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: MySQL Python libraries are installed.
+  yum:
+    name: "{{ mysql_python_package_rhel }}"
+    state: present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: MariaDB packages are installed centos.
+  yum:
+    name: "{{ mariadb_packages_centos }}"
+    state: present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Start sql Service
+  service: 
+    name: "{{ sql_name_service }}"
+    enabled: true
+    state: started

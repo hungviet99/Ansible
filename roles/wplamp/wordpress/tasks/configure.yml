@@ -1,27 +1,16 @@
 ---
-# config file for wordpress
-- name: download source wordpress
-  unarchive:
-    src: https://wordpress.org/latest.tar.gz
-    dest: '{{ web_root }}'
-    remote_src: yes
-
+# move code wordpress to web root
 - name: mv src wordpress
   shell: mv {{ web_root }}/wordpress/* {{ web_root }}/
 
+# create file config wordpress
 - name: mv file config
   shell: mv {{ web_root }}/wp-config-sample.php {{ web_root }}/wp-config.php
 
+# Update db, user, password login mysql
 - name: update file config wordpress
   lineinfile: dest={{ web_root }}/wp-config.php regexp={{ item.regexp }} line={{ item.line }}
   with_items:
   - {'regexp': "define\\( 'DB_NAME', '(database_name_here)+' \\);", 'line': "define('DB_NAME', '{{wp_mysql_db}}');"}
   - {'regexp': "define\\( 'DB_USER', '(username_here)+' \\);", 'line': "define('DB_USER', '{{wp_mysql_user}}');"}
   - {'regexp': "define\\( 'DB_PASSWORD', '(password_here)+' \\);", 'line': "define('DB_PASSWORD', '{{wp_mysql_password}}');"}
-
-- name: chmod apache
-  shell: '{{item}}'
-  with_items:
-  - chown -R www-data:www-data {{ web_root }}/*
-  - chmod -R 755 {{ web_root }}/*
-  - mv {{ web_root }}/index.html {{ web_root }}/index.html.bk

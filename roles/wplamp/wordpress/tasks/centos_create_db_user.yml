@@ -1,0 +1,18 @@
+---
+- name: Deletes anonymous MySQL server user for localhost
+  mysql_user: user="" state="absent"
+
+# Create db for wordpress
+- name: Centos create db wordpress
+  mysql_db:
+    name: "{{wp_mysql_db}}"
+    encoding: latin1
+    collation: latin1_general_ci
+
+#create user for wordpress
+- name: Centos create user wpress
+  mysql_user:
+    name: "{{wp_mysql_user}}"
+    host: "%"
+    password: "{{wp_mysql_password}}"
+    priv: "*.*:ALL"

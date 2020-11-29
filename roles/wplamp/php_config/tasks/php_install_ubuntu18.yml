@@ -1,0 +1,6 @@
+---
+# tasks file for php_config
+- name: PHP packages are installed.
+  apt:
+    name: "{{ php_ubuntu_packages }}"
+    state: present

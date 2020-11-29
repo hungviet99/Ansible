@@ -1,0 +1,30 @@
+---
+# tasks file for php_config
+- name: Install elpel-realease
+  yum:
+    name: '{{item}}'
+    state: present
+  with_items:
+  - epel-release
+  - yum-utils
+  - wget
+
+- name: Update respotory
+  yum:
+    name: '{{item}}'
+    state: present
+  with_items:
+  - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+- name: config remi
+  command: yum-config-manager --enable remi-php73
+
+- name: update sys
+  yum:
+    name: '*'
+    state: latest
+
+- name: PHP packages are installed.
+  yum:
+    name: "{{ php_centos7_packages }}"
+    state: present

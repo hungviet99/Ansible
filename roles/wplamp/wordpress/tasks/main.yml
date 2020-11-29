@@ -7,10 +7,24 @@
     remote_src: yes
 
 # create db/user for wordpress
-- include_tasks: create_db.yml
+- include_tasks: centos_create_db_user.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-- include_tasks: create_user.yml
+- include_tasks: ubuntu_create_db_user.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Setup for wordpress 
-
 - include_tasks: configure.yml
+
+# chmod permission
+- include_tasks: chmod_centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- include_tasks: chmod_ubuntu.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Start httpd service
+  service:
+    name: "{{ http_name_service }}"
+    state: restarted
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

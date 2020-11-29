@@ -1,6 +1,7 @@
 ---
 # handlers file for wordpress
-- name: Start httpd service
+- name: Start apache service
   service: 
     name: "{{ apache_name_service }}"
     state: restarted
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

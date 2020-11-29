@@ -1,7 +1,5 @@
 ---
 # defaults file for wordpress
-#wp_mysql_db: wordpress
-#wp_mysql_user: wpuser
-#wp_mysql_password: password
 web_root: /var/www/html
 apache_name_service: apache2
+http_name_service: httpd

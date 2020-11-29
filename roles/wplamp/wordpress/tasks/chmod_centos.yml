@@ -1,0 +1,6 @@
+---
+- name: chmod permission for apache
+  shell: '{{item}}'
+  with_items:
+  - chown -R apache:apache {{ web_root }}/*
+  - chmod -R 755 {{ web_root }}/*

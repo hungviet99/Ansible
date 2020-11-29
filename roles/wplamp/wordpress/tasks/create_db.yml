@@ -1,8 +1,0 @@
----
-# Create db for wordpress
-- name: create db wordpress
-  mysql_db:
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    name: "{{wp_mysql_db}}"
-    encoding: latin1
-    collation: latin1_general_ci

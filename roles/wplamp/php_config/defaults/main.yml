@@ -1,5 +1,5 @@
 ---
-php_packages:
+php_ubuntu_packages:
   - php
   - libapache2-mod-php
   - php-cli
@@ -14,4 +14,18 @@ php_packages:
   - php-soap
   - php-intl
   - php-zip
+  - php-opcache
+  
+php_centos7_packages:
+  - php
+  - php-cli
+  - php-common
+  - php-mcrypt
+  - php-gd
+  - php-json
+  - php-curl
+  - php-mbstring
+  - php-mysqlnd
+  - php-xml
+  - php-xmlrpc
   - php-opcache

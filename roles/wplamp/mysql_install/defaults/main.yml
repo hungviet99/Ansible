@@ -1,7 +1,14 @@
 ---
 # defaults file for mysql_install
+# Packet mysql python
 mysql_python_package_debian: python3-pymysql
-sql_name_service: mariadb
-mariadb_packages:
+mysql_python_package_rhel: MySQL-python
+# Packet mysql install
+mariadb_packages_ubuntu:
   - mariadb-client
   - mariadb-server
+mariadb_packages_centos: 
+  - mariadb
+  - mariadb-server
+# service mysql
+sql_name_service: mariadb

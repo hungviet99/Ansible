@@ -2,3 +2,5 @@
 # defaults file for apache_install
 apache_packages: apache2
 apache_name_service: apache2
+httpd_packages: httpd
+httpd_name_service: httpd

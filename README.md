@@ -30,43 +30,41 @@ Playbook sử dụng để cài wordpress trên Ubuntu 18.04 và CentOS 7
 Cấu trúc của các role được thể hiện như sau: 
 
 ```
-.
-└── wplamp
-    ├── apache_install
-    │   ├── defaults
-    │   │   └── main.yml
-    │   ├── handlers
-    │   │   └── main.yml
-    │   └── tasks
-    │       └── main.yml
-    ├── mysql_install
-    │   ├── defaults
-    │   │   └── main.yml
-    │   ├── handlers
-    │   │   └── main.yml
-    │   ├── README.md
-    │   └── tasks
-    │       └── main.yml
-    ├── php_config
-    │   ├── defaults
-    │   │   └── main.yml
-    │   └── tasks
-    │       ├── main.yml
-    │       ├── php_install_centos7.yml
-    │       └── php_install_ubuntu18.yml
-    ├── README.md
-    └── wordpress
-        ├── defaults
-        │   └── main.yml
-        ├── handlers
-        │   └── main.yml
-        └── tasks
-            ├── centos_create_db_user.yml
-            ├── chmod_centos.yml
-            ├── chmod_ubuntu.yml
-            ├── configure.yml
-            ├── main.yml
-            └── ubuntu_create_db_user.yml
+roles
+└────── wplamp
+       ├── apache_install
+       │   ├── defaults
+       │   │   └── main.yml
+       │   ├── handlers
+       │   │   └── main.yml
+       │   └── tasks
+       │       └── main.yml
+       ├── mysql_install
+       │   ├── defaults
+       │   │   └── main.yml
+       │   ├── handlers
+       │   │   └── main.yml
+       │   └── tasks
+       │       └── main.yml
+       ├── php_config
+       │   ├── defaults
+       │   │   └── main.yml
+       │   └── tasks
+       │       ├── main.yml
+       │       ├── php_install_centos7.yml
+       │       └── php_install_ubuntu18.yml
+       └── wordpress
+           ├── defaults
+           │   └── main.yml
+           ├── handlers
+           │   └── main.yml
+           └── tasks
+               ├── centos_create_db_user.yml
+               ├── chmod_centos.yml
+               ├── chmod_ubuntu.yml
+               ├── configure.yml
+               ├── main.yml
+               └── ubuntu_create_db_user.yml
 ```
 
 thư mục role có các nhiệm vụ tương ứng như: 

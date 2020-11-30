@@ -98,13 +98,22 @@ cd /root/ansible_playbook_wordpress
 
 Thêm vào các máy chủ được quản lý trong file `ansible_playbook_wordpress/hosts`. 
 
-Ví dụ : Tôi có các máy chủ có địa chỉ là `10.10.30.4`, `10.10.30.5`, `10.10.30.6`. Tôi sẽ thêm vào file như sau: 
+Ví dụ như sau: 
 
 ```
-echo 10.10.30.4 > /root/ansible_playbook_wordpress/hosts
-echo 10.10.30.5 > /root/ansible_playbook_wordpress/hosts
-echo 10.10.30.6 > /root/ansible_playbook_wordpress/hosts
+[wordpress]
+web1 ansible_host=10.10.30.4 ansible_port=22 ansible_user=root ansible_ssh_pass=password
 ```
+
+trong đó: 
+
+- `ansible_host` là địa chỉ của máy chủ được quản lý
+
+- `ansible_port` là port sử dụng để ssh vào máy chủ từ xa
+
+- `ansible_user` là thông tin user sử dụng để đăng nhập ssh 
+
+- `ansible_ssh_pass` là password của user đó
 
 ### 4. Cấu hình file playbook
 
@@ -180,6 +189,10 @@ host1-10.10.30.5          : ok=24   changed=18   unreachable=0    failed=0    sk
 host4-10.10.30.4          : ok=17   changed=10   unreachable=0    failed=0    skipped=8    rescued=0    ignored=0
 ```
 Khi `failed` = 0 tức là không có lỗi xảy ra trong quá trình cài đặt. Quá trình chạy playbook hoàn tất !
+
+### 6. Kết thúc cài đặt 
+
+Mở trình duyệt web của bạn và điều hướng đến http://10.10.30.4 (hoặc IP máy chủ web của bạn) để hoàn tất cài đặt WordPress.
 
 Author Information
 ------------------
